@@ -1,4 +1,12 @@
 #!/bin/bash
+#
+#export http_proxy="http://192.168.1.228:1080"
+#export https_proxy="https://192.168.1.228:1080"
+#
+#export http_proxy='http://name:password@x.x.x.x:xx'
+#
+#export https_proxy=$http_proxy
+
 
 function try () {
 "$@" || exit -1
@@ -34,6 +42,7 @@ fi
 
 if [ ! -f "$ANDROID_ARM64_CC" ]; then
     echo "Make standalone toolchain for ARM64 arch"
+     echo "ANDROID_NDK_HOME是NULL的么？$ANDROID_NDK_HOME"
     $ANDROID_NDK_HOME/build/tools/make_standalone_toolchain.py --arch arm64 \
         --api $MIN_API --install-dir $ANDROID_ARM64_TOOLCHAIN
 fi
